@@ -4,8 +4,8 @@ const { formSubmission } = require("./scriptHelper");
 
 window.addEventListener("load", function () {
 
-    const form = document.querySelector("form")
-    form.addEventListener("submit", (event)=>{
+    let form = document.querySelector("form")
+    form.addEventListener("submit", function(event){
         event.preventDefault();
         let pilot = document.querySelector("input[name=pilotName]").value;
         let copilot = document.querySelector("input[name=copilotName]").value;
@@ -13,7 +13,7 @@ window.addEventListener("load", function () {
         let cargoLevel= document.querySelector("input[name=cargoMass]").value;
         let list=document.getElementById("faultyItems")
 
-        formSubmission(document,list,pilot,copilot,fuelLevel,cargoLevel);
+        
     })
     
 
