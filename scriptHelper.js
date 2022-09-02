@@ -18,8 +18,38 @@ let missionTarget = document.getElementById('missionTarget')
 }
 
 function validateInput(testInput) {
-
-   
+ let pilotStatus = document.getElementById('pilotStatus')
+ let copilotStatus = document.getElementById('copilotStatus')  
+ let fuesStatus = document.getElementById('fuelStatus')
+ let launchStatus = document.getElementById('launchStatus')
+ let cargoStatus = document.getElementById('cargoStatus')
+ if (validateInput(pilot) === `Empty`|| validateInput(copilot) === `Empty`|| 
+    validateInput(fuelLevel) === `Empty`||validateInput(cargoLevel) === `Empty`) {
+        alert(`All fields are required`);
+    }
+    else if (validateInput(fuelLevel) === 'Not a Number' || validateInput(cargoLevel) === 'Not a Number') {
+        alert(`Please enter numerical values for Fuel Level and Cargo Mass`);
+    } else if (validateInput(pilot)===`Is a Number`||validateInput(copilot)===`Is a Number`) {
+        alert('Please do not enter numbers for name of pilot or co-pilot');
+    } 
+    else {
+        if (Number(fuelLevel) < 10000) {
+            fuelStatus.innerHTML = `Not enough fuel for journey`;
+            list.style.visibility = 'visible';
+            launchStatus.innerHTML = `Shuttle not ready for launch`;
+            launchStatus.style.color = `red`;
+        } else if (Number(cargoLevel) > 10000) {
+            cargoStatus.innerHTML = `Cargo too heavy for takeoff`;
+            list.style.visibility = `visible`;
+            launchStatus.innerHTML = `Shuttle not ready for launch`;
+            launchStatus.style.color = `red`;
+        } else if (Number(cargoLevel) < 10000 && Number(fuelLevel) > 10000) {
+            list.style.visibility = `visible`;
+            fuelStatus.innerHTML = `Enough fuel for journey`;
+            cargoStatus.innerHTML = `Cargo light enough for takeoff`;
+            launchStatus.innerHTML = `Shuttle ready for launch`;
+            launchStatus.style.color = `green`;
+        }
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
