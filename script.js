@@ -1,5 +1,7 @@
 // Write your JavaScript code here!
 
+const { formSubmission } = require("./scriptHelper");
+
 window.addEventListener("load", function () {
 
     const form = document.querySelector("form")
@@ -10,6 +12,8 @@ window.addEventListener("load", function () {
         let fuelLevel= document.querySelector("input[name=fuelLevel]").value;
         let cargoLevel= document.querySelector("input[name=cargoMass]").value;
         let list=document.getElementById("faultyItems")
+
+        formSubmission(document,list,pilot,copilot,fuelLevel,cargoLevel);
     })
     
 
